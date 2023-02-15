@@ -86,9 +86,31 @@ const httpDeleteCity = async (req, res) => {
   }
 };
 
+// method GET url city/?name="<character that starts with>"
+
+const httpGetAllCities = async (req, res) => {
+  try {
+    const cities = CityService.getAllCities(req.query);
+    res.status(200).json({
+      data: cities,
+      msg: `successfully fetched all the cities`,
+      success: true,
+      err: {},
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({
+      data: {},
+      msg: `error occured while fetching cities from data base`,
+      success: false,
+      err: error,
+    });
+  }
+};
 module.exports = {
   httpGetCity,
   httpCreateCity,
   httpUpdateCity,
   httpDeleteCity,
+  httpGetAllCities,
 };

@@ -33,3 +33,9 @@ and then execute
 - A flight can have an aeroplane where as the same aeroplane can be used for many flights.
 - A city has many flights where as oneairport belongs to a city
 -one airport can have many flights , but one flight belongs to an airport
+
+
+##Tables 
+### cities Table-> id,name,created_at,updated_at
+### airports Table -> id, name, cityId
+    relationship -> one city can have many airports where as one airport belongs to an city (one to many relationship)
