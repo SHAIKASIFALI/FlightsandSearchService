@@ -24,3 +24,12 @@ and then execute
 
 `npx sequelize db:migrate`
 ```
+## DB Design
+- Airplane Table
+- Flight Table
+- Airport Tbale
+- City Table
+
+- A flight can have an aeroplane where as the same aeroplane can be used for many flights.
+- A city has many flights where as oneairport belongs to a city
+-one airport can have many flights , but one flight belongs to an airport
