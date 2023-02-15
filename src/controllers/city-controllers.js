@@ -90,7 +90,7 @@ const httpDeleteCity = async (req, res) => {
 
 const httpGetAllCities = async (req, res) => {
   try {
-    const cities = CityService.getAllCities(req.query);
+    const cities = await cityService.getAllCities(req.query);
     res.status(200).json({
       data: cities,
       msg: `successfully fetched all the cities`,
