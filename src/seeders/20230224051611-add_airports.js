@@ -21,12 +21,35 @@ module.exports = {
       "Airports",
       [
         {
-          name: "kempahowda international airport ",
+          name: "kempagowda international airport ",
+          cityId: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          name: "Belgavi international airport ",
+          cityId: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          name: "Mysuru international airport ",
+          cityId: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          name: "hyderabad international airport ",
+          cityId: 5,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          name: "tirupati international airport ",
           cityId: 2,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
-        
       ],
       {}
     );
@@ -39,5 +62,7 @@ module.exports = {
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
+
+    await queryInterface.bulkDelete("airports", null, {});
   },
 };

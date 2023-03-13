@@ -39,3 +39,8 @@ and then execute
 ### cities Table-> id,name,created_at,updated_at
 ### airports Table -> id, name, cityId
     relationship -> one city can have many airports where as one airport belongs to an city (one to many relationship)
+
+###todoinservvice
+1.Code Refactoring
+2.Writing the error handling cases
+3.Writing the Jest error test cases..

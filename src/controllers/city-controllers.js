@@ -1,12 +1,11 @@
 const { CityService } = require("../services/index");
 const cityService = new CityService();
-
+const { StatusCodes } = require("http-status-codes");
 // method -> GET url-> city/:id
 const httpGetCity = async (req, res) => {
-  console.log(req.params.id);
   try {
     const city = await cityService.getCity(req.params.id);
-    return res.status(200).json({
+    return res.status(StatusCodes.ACCEPTED).json({
       data: city,
       msg: `city fetched successfully`,
       success: true,
@@ -14,9 +13,9 @@ const httpGetCity = async (req, res) => {
     });
   } catch (error) {
     console.log(error);
-    return res.status(500).json({
+    return res.status(error.statusCode).json({
       data: {},
-      msg: `error occured while fetching city from data base`,
+      msg: `something error occured`,
       success: false,
       err: error,
     });
@@ -27,17 +26,16 @@ const httpGetCity = async (req, res) => {
 const httpCreateCity = async (req, res) => {
   try {
     const city = await cityService.createCity(req.body);
-    return res.status(201).json({
+    return res.status(StatusCodes.CREATED).json({
       data: city,
       msg: `city created successfully`,
       success: true,
       err: {},
     });
   } catch (error) {
-    console.log(error);
-    return res.status(500).json({
+    return res.status(error.statusCode).json({
       data: {},
-      msg: `error occured while creating city in data base`,
+      msg: `something error occured`,
       success: false,
       err: error,
     });
@@ -48,7 +46,7 @@ const httpCreateCity = async (req, res) => {
 const httpUpdateCity = async (req, res) => {
   try {
     const city = await cityService.updateCity(req.params.id, req.body);
-    return res.status(200).json({
+    return res.status(StatusCodes.ACCEPTED).json({
       data: city,
       msg: "city updated successfully in database",
       success: true,
@@ -56,9 +54,9 @@ const httpUpdateCity = async (req, res) => {
     });
   } catch (error) {
     console.log(error);
-    return res.status(500).json({
+    return res.status(error.statusCode).json({
       data: {},
-      msg: `error occured while updating city from data base`,
+      msg: `something error occured`,
       success: false,
       err: error,
     });
@@ -69,17 +67,16 @@ const httpUpdateCity = async (req, res) => {
 const httpDeleteCity = async (req, res) => {
   try {
     const response = await cityService.deleteCity(req.params.id);
-    return res.status(200).json({
-      data: {},
+    return res.status(StatusCodes.ACCEPTED).json({
+      data: response,
       msg: `city deleted succesfully`,
       success: true,
       err: {},
     });
   } catch (error) {
-    console.log(error);
-    return res.status(500).json({
+    return res.status(error.statusCode).json({
       data: {},
-      msg: `error occured while deleting city from data base`,
+      msg: `something error occured`,
       success: false,
       err: error,
     });
@@ -91,17 +88,16 @@ const httpDeleteCity = async (req, res) => {
 const httpGetAllCities = async (req, res) => {
   try {
     const cities = await cityService.getAllCities(req.query);
-    res.status(200).json({
+    res.status(StatusCodes.ACCEPTED).json({
       data: cities,
       msg: `successfully fetched all the cities`,
       success: true,
       err: {},
     });
   } catch (error) {
-    console.log(error);
-    return res.status(500).json({
+    return res.status(error.statusCode).json({
       data: {},
-      msg: `error occured while fetching cities from data base`,
+      msg: `something error occured`,
       success: false,
       err: error,
     });
