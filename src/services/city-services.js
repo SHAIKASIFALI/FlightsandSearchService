@@ -70,7 +70,6 @@ class CityService {
   async getCity(cityId) {
     try {
       const city = await this.CityRepository.getCity(cityId);
-      console.log(city);
       if (!city)
         throw new ClientError(
           `resource not found`,

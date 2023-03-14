@@ -1,3 +1,5 @@
+const RepositoryError = require("../utils/Errors/RepositoryError");
+
 class CrudRepository {
   constructor(model) {
     this.model = model;
@@ -8,10 +10,10 @@ class CrudRepository {
       const result = await this.model.create(data);
       return result;
     } catch (error) {
-      console.log(
-        `something error occured in the ${this.model} repository layer`
+      throw new RepositoryError(
+        `something error occured in the ${this.model} repository layer`,
+        `something wrong occured while creating a ${this.model} in db `
       );
-      throw error;
     }
   }
 
@@ -20,10 +22,10 @@ class CrudRepository {
       const result = await this.model.findByPk(dataId);
       return result;
     } catch (error) {
-      console.log(
-        `something error occured in the ${this.model} repository layer`
+      throw new RepositoryError(
+        `something error occured in the ${this.model} repository layer`,
+        `something wrong occured while fetching a ${this.model} in db `
       );
-      throw error;
     }
   }
 
@@ -32,10 +34,10 @@ class CrudRepository {
       const result = await this.model.findAll();
       return result;
     } catch (error) {
-      console.log(
-        `something error occured in the ${this.model} repository layer`
+      throw new RepositoryError(
+        `something error occured in the ${this.model} repository layer`,
+        `something wrong occured while fetching all ${this.model} in db `
       );
-      throw error;
     }
   }
 
@@ -49,29 +51,30 @@ class CrudRepository {
           },
         }
       );
+
       let result = await this.model.findByPk(dataId);
       return result;
     } catch (error) {
-      console.log(
-        `something error occured in the ${this.model} repository layer`
+      throw new RepositoryError(
+        `something error occured in the ${this.model} repository layer`,
+        `something wrong occured while updating a ${this.model} in db `
       );
-      throw error;
     }
   }
 
   async delete(dataId) {
     try {
-      await this.model.destroy({
+      const response = await this.model.destroy({
         where: {
           id: dataId,
         },
       });
-      return true;
+      return response;
     } catch (error) {
-      console.log(
-        `something error occured in the ${this.model} repository layer`
+      throw new RepositoryError(
+        `something error occured in the ${this.model} repository layer`,
+        `something wrong occured while deleting a ${this.model} in db `
       );
-      throw error;
     }
   }
 }
