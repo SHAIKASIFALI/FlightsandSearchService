@@ -41,6 +41,9 @@ and then execute
     relationship -> one city can have many airports where as one airport belongs to an city (one to many relationship)
 
 ###todoinservvice
-1.Code Refactoring
-2.Writing the error handling cases
+1.Code Refactoring(Done)
+2.Writing the error handling cases(Done)
 3.Writing the Jest error test cases..
+4.Have an caching at this service..
+5.add the middlewares
+6.seed the data 

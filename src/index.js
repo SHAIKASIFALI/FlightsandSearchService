@@ -11,7 +11,7 @@ const setUpandStartServer = async () => {
   const app = express();
   app.use(cors());
   app.use(bodyParser.json());
-  app.use("/api", router);
+  app.use("/searchservice/api", router);
   app.listen(PORT, async () => {
     if (DB_SYNC) db.sequelize.sync();
     console.log(`Server is listening at ${PORT}`);
